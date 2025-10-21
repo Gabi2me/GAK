@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="gak_cinza.png">
+<title>GAK — Home</title>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141a27;           /* fundo um pouco mais claro */
+    --surface:#1a2132;      /* superfícies suavemente mais claras */
+    --surface-2:#222b40;    /* contraste melhor em cards */
+    --text:#eef3fa;         /* texto levemente mais claro */
+    --muted:#b1bdd3;
+    --accent:#56e0ff;
+    --accent-2:#7cf3d2;
+    --ring:#33435f;
+    --danger:#2563EB;
+    --ok:#69db7c;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(600px 300px at 20% 30%, rgba(120, 210, 255, 0.25), transparent 70%),
+        radial-gradient(800px 400px at 80% 70%, rgba(150, 240, 255, 0.2), transparent 75%),
+        radial-gradient(400px 200px at 60% 10%, rgba(180, 255, 220, 0.18), transparent 70%),
+        linear-gradient(180deg, #141a27 0%, #192941 55%, #203355 100%);
+    color:var(--text);
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+
+  .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in oklab, var(--surface) 92%, transparent);
+    backdrop-filter:saturate(1.2) blur(6px);
+    border-bottom:1px solid var(--ring);
+  }
+
+  #menu{
+    position: sticky; top: 0;
+    z-index: 50;
+    color: #2c364d4b;
+    line-height: 0.50; /*Puxa o texto para cima*/
+    background: color-mix(in oklab, #0f1115 90%, transparent);
+    /*oklab e um espaco de cor perceptual
+    e usado o color-mix na frente para o navegador misturar duas cores no espaco oklab em vez de simplesmente somar canais de RGB.*/
+   border-bottom: 1px solid; /*Linha sutil em baixo do menu*/
+   color:#2c364d;
+}
+
+/*CONTEINER DO MENU*/
+.menu-list{
+    list-style:none; /*remove a bolinha e tambem desativa imagem de marcador e posicao do marcador.*/
+    margin:0; /*espaco externo*/ 
+    padding:0 50px; /*espaco interno*/
+    align-items: center; /* alinha verticalmente os itens */
+    display:flex; /*Organiza secoes internas*/
+    justify-content:space-between;
+    background:#0f1115;
+
+}
+
+/*ITENS E LINKS*/
+.menu-list a{
+    color:#a9b3c7;
+    text-decoration:none; 
+    font-weight: 600; 
+    letter-spacing:.3px; 
+    padding: 10px 8px;
+    border-radius:10px; /*cantos do menu*/
+}
+
+/*ESTADOS E ACESSIBILIDADE*/
+.menu-list a:hover,.menu-list a:focus{ 
+/*:hover links <a> dentro de um elemento com classe menu quando o mouse passa por cima.*/
+/*focus links <a> dentro da tag <menu> quando recebem foco via teclado.*/
+    color: #2563EB;
+    outline: none; /*Foco visivel*/
+    background: #1a2132;
+     
+}
+/*ICONES*/
+.menu-link{
+  display:flex;
+  align-items:flex-end;  /* coloca conteúdo no fundo da linha */
+  gap:8px;
+  height:40px;           /* garante altura fixa */
+}
+
+.menu-link svg{
+  transform: translateY(1px); /* empurra só o ícone para baixo */
+}
+.logo-menu{
+    transform: translateY(1px); /* empurra so o icone para baixo */
+}
+
+/* dropdown do usuário */
+.user-menu{ position:relative; }
+.user-toggle{ display:inline-flex; align-items:center; gap:8px; border-radius:10px; outline:0; }
+.user-toggle:focus{ box-shadow:0 0 0 3px color-mix(in oklab, #56e0ff 25%, transparent); }
+
+.user-dropdown{
+  position:absolute; right:0; top:calc(100% + 8px);
+  min-width:220px; margin:0; padding:6px; list-style:none; z-index:1000;
+  background:#151822; color:#e9eef5; border:1px solid #2c364d; border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  opacity:0; transform:scale(.98) translateY(-4px); pointer-events:none;
+  transition:opacity .12s ease, transform .12s ease;
+}
+.user-menu.open .user-dropdown{ opacity:1; transform:scale(1) translateY(0); pointer-events:auto; }
+
+.user-dropdown a,
+.user-dropdown button{
+  display:flex; align-items:center; gap:10px;
+  width:100%; padding:10px 10px; border-radius:10px;
+  background:transparent; color:#e9eef5; text-decoration:none; border:none; font:inherit; cursor:pointer;
+}
+.user-dropdown a:hover,
+.user-dropdown button:hover,
+.user-dropdown a:focus,
+.user-dropdown button:focus{
+  outline:0; background:color-mix(in oklab, #56e0ff 18%, transparent);
+}
+.user-sep{ height:1px; margin:6px; border:0; background:color-mix(in oklab, #2c364d 70%, transparent); }
+
+
+  nav a:hover{border-color:var(--ring); background:color-mix(in oklab, var(--accent) 10%, transparent)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 14px;border-radius:12px;border:1px solid var(--ring);
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#041016;font-weight:800;cursor:pointer;text-decoration:none;
+    transition:transform .08s ease,filter .12s ease,box-shadow .12s ease;
+  }
+  .btn:hover{filter:saturate(1.05);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .btn.ghost{background:transparent;color:var(--text);border-color:color-mix(in oklab,var(--accent) 35%, var(--ring))}
+  .hamb{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--ring);border-radius:10px;background:var(--surface-2);color:var(--text)}
+
+  #menu{
+    position: sticky; top: 0;
+    z-index: 50;
+    color: #2c364d4b;
+    line-height: 0.50; /*Puxa o texto para cima*/
+    background: color-mix(in oklab, #0f1115 90%, transparent);
+    /*oklab e um espaco de cor perceptual
+    e usado o color-mix na frente para o navegador misturar duas cores no espaco oklab em vez de simplesmente somar canais de RGB.*/
+   border-bottom: 1px solid; /*Linha sutil em baixo do menu*/
+   color:#2c364d;
+}
+
+/*CONTEINER DO MENU*/
+.menu-list{
+    list-style:none; /*remove a bolinha e tambem desativa imagem de marcador e posicao do marcador.*/
+    margin:0; /*espaco externo*/ 
+    padding:0 50px; /*espaco interno*/
+    align-items: center; /* alinha verticalmente os itens */
+    display:flex; /*Organiza secoes internas*/
+    justify-content:space-between;
+    background:#0f1115;
+
+}
+
+/*ITENS E LINKS*/
+.menu-list a{
+    color:#a9b3c7;
+    text-decoration:none; 
+    font-weight: 600; 
+    letter-spacing:.3px; 
+    padding: 10px 8px;
+    border-radius:10px; /*cantos do menu*/
+}
+
+/*ESTADOS E ACESSIBILIDADE*/
+.menu-list a:hover,.menu-list a:focus{ 
+/*:hover links <a> dentro de um elemento com classe menu quando o mouse passa por cima.*/
+/*focus links <a> dentro da tag <menu> quando recebem foco via teclado.*/
+    color: #2563EB;
+    outline: none; /*Foco visivel*/
+    background: #1a2132;
+     
+}
+/*ICONES*/
+.menu-link{
+  display:flex;
+  align-items:flex-end;  /* coloca conteúdo no fundo da linha */
+  gap:8px;
+  height:40px;           /* garante altura fixa */
+}
+
+.menu-link svg{
+  transform: translateY(1px); /* empurra só o ícone para baixo */
+}
+.logo-menu{
+    transform: translateY(1px); /* empurra so o icone para baixo */
+}
+
+/* dropdown do usuário */
+.user-menu{ position:relative; }
+.user-toggle{ display:inline-flex; align-items:center; gap:8px; border-radius:10px; outline:0; }
+.user-toggle:focus{ box-shadow:0 0 0 3px color-mix(in oklab, #56e0ff 25%, transparent); }
+
+.user-dropdown{
+  position:absolute; right:0; top:calc(100% + 8px);
+  min-width:220px; margin:0; padding:6px; list-style:none; z-index:1000;
+  background:#151822; color:#e9eef5; border:1px solid #2c364d; border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  opacity:0; transform:scale(.98) translateY(-4px); pointer-events:none;
+  transition:opacity .12s ease, transform .12s ease;
+}
+.user-menu.open .user-dropdown{ opacity:1; transform:scale(1) translateY(0); pointer-events:auto; }
+
+.user-dropdown a,
+.user-dropdown button{
+  display:flex; align-items:center; gap:10px;
+  width:100%; padding:10px 10px; border-radius:10px;
+  background:transparent; color:#e9eef5; text-decoration:none; border:none; font:inherit; cursor:pointer;
+}
+.user-dropdown a:hover,
+.user-dropdown button:hover,
+.user-dropdown a:focus,
+.user-dropdown button:focus{
+  outline:0; background:color-mix(in oklab, #56e0ff 18%, transparent);
+}
+.user-sep{ height:1px; margin:6px; border:0; background:color-mix(in oklab, #2c364d 70%, transparent); }
+
+
+  /* Hero */
+  .hero{
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--ring);
+    background:
+      radial-gradient(800px 400px at 80% 20%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 60%),
+      radial-gradient(700px 380px at 20% 80%, color-mix(in oklab, var(--accent-2) 12%, transparent), transparent 60%);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center;padding:64px 0}
+  .hero h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+  .hero p{color:var(--muted);margin:0 0 22px}
+
+  /* Cards */
+  .section{padding:48px 0;border-top:1px solid var(--ring)}
+  .section h2{margin:0 0 18px;font-size:28px}
+  .muted{color:var(--muted);margin:0 0 26px}
+  .grid{
+    display:grid;gap:16px;
+    grid-template-columns:repeat(3,1fr);
+  }
+  @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+  .card{
+    border:1px solid var(--ring);border-radius:16px;background:var(--surface-2);
+    padding:18px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .08s ease, border-color .12s ease, box-shadow .12s ease;
+  }
+  .card:hover{transform:translateY(-2px);border-color:color-mix(in oklab,var(--accent) 40%, var(--ring));box-shadow:0 12px 28px rgba(0,0,0,.35)}
+  .card i{font-size:28px;color:color-mix(in oklab,var(--text) 80%, var(--muted))}
+  .card h3{margin:0;font-size:18px;color:var(--accent)}
+  .card p{margin:0;color:var(--muted)}
+  .card .more{margin-top:auto}
+
+  /* CTA */
+  .cta{
+    padding:46px 0;border-top:1px solid var(--ring);
+    background:linear-gradient(135deg, color-mix(in oklab,var(--accent) 12%, transparent), transparent 60%);
+  }
+  .cta .box{
+    border:1px solid var(--ring);border-radius:18px;background:var(--surface-2);
+    padding:24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;
+  }
+  .cta h3{margin:0}
+  .cta p{margin:0;color:var(--muted)}
+
+  /* Back to top */
+    .to-top{ position:fixed; 
+      right: 18px; bottom: 18px; padding: 10px 12px; 
+      border-radius: 12px; border:1px solid color( #2c364d);
+      background: #1b2030; color: #e9eef5; text-decoration:none; font-weight:700; opacity:.0; pointer-events:none; transition:.25s ease; }
+    .to-top.show{ opacity:1; pointer-events:auto; }
+
+  /* Footer */
+  footer{ margin-top:auto; }
+
+#rodape {
+  width:100%;
+  padding:16px 12px;
+  border-top: 1px solid #2c364d;
+  color: #a9b3c7;
+  text-align: center; 
+  font-size: 14px;   
+  background:#0f1115;
+}
+
+  /* A11y */
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;clip-path:inset(50%)}
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+ <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+
+</header>
+
+
+<main id="inicio">
+    
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container wrap">
+      <div>
+        <h1>Explorando a evolução da informática e a computação quântica</h1>
+        <p>Da era digital ao presente. Entenda os marcos, veja aplicações reais e aprenda com materiais selecionados.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="informatica.html"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+          <a class="btn ghost" href="quantica.html"><i class="fa-solid fa-atom"></i> Começar por Quântica</a>
+        </div>
+      </div>
+  </section>
+
+  <!-- Destaques -->
+  <section class="section">
+          <div style="height:70px"></div>
+    <div class="container">
+      <h2>Destaques</h2>
+      <p class="muted">Conteúdos rápidos para você começar agora.</p>
+
+      <div class="grid">
+        <article class="card">
+          <i class="fa-solid fa-microchip"></i>
+          <h3>Evolução da Informática</h3>
+          <p>Da válvula ao computador quântico. Os marcos que moldaram tudo.</p>
+          <a class="more btn ghost" href="informatica.html">Ver mais</a>
+        </article>
+
+        <article class="card">
+          <i class="fa-solid fa-atom"></i>
+          <h3>Computação Quântica</h3>
+          <p>Qubits, superposição, entrelaçamento e aplicações atuais.</p>
+          <a class="more btn ghost" href="quantica.html">Explorar</a>
+        </article>
+
+        <article class="card">
+          <i class="fa-solid fa-circle-question"></i>
+          <h3>Mais sobre o  conteúdo quântico</h3>
+          <p>Conteúdo a mais se estiver interessado em computação quântica.</p>
+          <a class="more btn ghost" href="https://www.ibm.com/br-pt/think/topics/quantum-computing">Acessar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+          <div style="height:150px"></div>
+    <div class="container box">
+      <div>
+       <h1>
+         SOBRE NÓS:
+       </h1>
+       <div style="height:40px"></div>
+       <p>
+          A GAK é um projeto do ETEC Portas Abertas sobre Evolução da Tecnologia e Computadores Quânticos. Nossa equipe — Kemilly, Gabriela, Arthur e Pedro — desenvolveu este trabalho com o apoio das professoras Fernanda, Kelly, Juliana e Priscila.
+A GAK mostra que inovação nasce da colaboração e que os computadores quânticos representam o próximo grande salto da tecnologia.
+       </p>
+         <div style="height:40px"></div>
+    </div>
+  </section>
+</main>
+
+<a href="#home" class="to-top" id="to-top" aria-label="Voltar ao topo">↑ Topo</a>
+<!-- Back to top visibility-->
+ <script>
+  const toTop = document.getElementById('to-top');
+
+  const onScroll = () => {
+    if (window.scrollY > 300) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Se quiser garantir rolagem suave em todos os navegadores:
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+ <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+  </footer>
+
+<script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
