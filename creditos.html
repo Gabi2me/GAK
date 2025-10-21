@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name ="author" content="Gabriela Belome Tome">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="gak_cinza.png">
+        <link rel="stylesheet" href="style.css">
+        <title>GAK</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!--Biblioteca para os icones-->  
+    </head>
+
+    <body >
+   <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+  
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+   
+        <br>
+        <br>
+ <center>            
+        <div style="height:50px"></div>
+        <h1>
+            CRÉDITOS
+        </h1>
+        <p>
+            Esta página tem como finalidade reconhecer autores, colaboradores e fontes utilizadas no projeto.
+        </p>
+        
+        <div  class="faixa-cinza">
+            <nav aria-label="Sumario" class="toc">
+                <a href="#equipe">Equipe</a>
+                <a href="#orientadores">Orientadores do projeto</a> 
+                <a href="#agradecimentos">Agradecimentos</a> 
+                <a href="#fontes">Fontes</a>
+            </nav>
+        </div>
+        </center> 
+         
+        <selection id="equipe" >
+            <div style="height:8dvb"></div>
+            <div class="wrap">
+            <p class="legenda">EQUIPE DE PROJETO</p>
+            <h1>FUNÇÃO DE CADA INTEGRANTE</h1>
+            <div class="swiper alunos-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="kemilly.png" alt="Avatar 1"><h3>Kemilly</h3><p class="papel">Gerente de Projetos</p><p class="texto">Coordenei o desenvolvimento do site GAK, organizei prazos e tarefas, garantindo a boa comunicação e o andamento do projeto. Aprendi muito sobre liderança e trabalho em equipe.</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="gabi.png" alt="Avatar 2"><h3>Gabriela</h3><p class="papel">Back‑End</p><p class="texto">Desenvolvi a parte lógica e funcional do site, cuidando da estrutura e do banco de dados. Fortaleci meus conhecimentos em programação e resolução de problemas.</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="pedro.png" alt="Avatar 3"><h3>Pedro</h3><p class="papel">Analista</p><p class="texto">Planejei e analisei as necessidades do projeto, definindo funções e acompanhando o desenvolvimento. Essa função reforçou minha visão técnica e organizacional.</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="arthur.png" alt="Avatar 4"><h3>Arthur</h3><p class="papel">Front‑End</p><p class="texto">Criei o design e a interface do site, focando em usabilidade e aparência. Aprimorei minhas habilidades em HTML, CSS e JavaScript.
+</p></article></div>
+            </div>
+            </selection>
+            <selection id="orientadores">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev" aria-label="Anterior"></div>
+                <div class="swiper-button-next" aria-label="Próximo"></div>
+                </div>
+        </selection>
+            <div style="height:240px"></div>
+            <selection id="orientadores">
+                    <p class="legenda" style="margin-top:24px">ORIENTADORES DO PROJETO</p>
+            <h1>PROFESSORES</h1>
+            <div class="swiper profs-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="fernanda.png" alt="Avatar A"><h3>FERNANDA HELLEN SOUSA</h3><p class="papel">Profª Especialista Gestão Educacional e de Projetos</p><p class="texto">Mestranda em Educação Graduada em Sistemas de Informação pelo Instituto Paulista de Ensino e Pesquisa; Especialização em Gestão em Escolar pelo Centro Universitário Claretiano e em Gestão de Projetos pela ESAMC – Escola Superior de Administração, Marketing e Comunicação.</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="priscila.png" alt="Avatar B"><h3>PRISCILA BATISTA MARTINS</h3><p class="papel">Profº Especialista Informatica e Educação </p><p class="texto">GRADUAÇÃO EM TECNOLOGIA EM PROCESSAMENTO DE DADOS
+GRADUAÇÃO EM PEDAGOGIA
+LICNECIATURA EM INFORMÁTICA
+ESPECIALIZAÇÃO EM INFORMATICA EM EDUCAÇÃO; EDUCAÇÃO ESPECIAL; METODOLOGIA ATIVAS.
+</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="kelly.png" alt="Avatar C"><h3>Kelly</h3><p class="papel">Profª Especialista Gestão Educacional e de Projetos</p><p class="texto">Área voltada ao desenvolvimento de sites e aplicações web, incluindo front-end, back-end e integração com bancos de dados.</p></article></div>
+                <div class="swiper-slide"><article class="card"><img class="avatar" src="juliana.png" alt="Avatar D"><h3>JULIANA BAPTISTA DOS SANTOS</h3><p class="papel">Profª Especialista em Design</p><p class="texto">Bacharel em Comunicação Social (Habilitação em Publicidade e Propaganda)
+Mestre em Linguagem, Mídia e Arte.
+</p></article></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev" aria-label="Anterior"></div>
+            <div class="swiper-button-next" aria-label="Próximo"></div>
+            </div>
+             </div>
+        </selection>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const base = {
+      spaceBetween: 24,
+      centeredSlides: false,
+      loop: true,
+      pagination: { clickable: true },
+      navigation: {},
+      breakpoints: { 768:{slidesPerView:2}, 1024:{slidesPerView:3} }
+    };
+
+    new Swiper('.alunos-swiper', {
+      ...base,
+      pagination: { el: '.alunos-swiper .swiper-pagination', clickable: true },
+      navigation: { nextEl: '.alunos-swiper .swiper-button-next', prevEl: '.alunos-swiper .swiper-button-prev' }
+    });
+
+    new Swiper('.profs-swiper', {
+      ...base,
+      pagination: { el: '.profs-swiper .swiper-pagination', clickable: true },
+      navigation: { nextEl: '.profs-swiper .swiper-button-next', prevEl: '.profs-swiper .swiper-button-prev' }
+    });
+  </script>
+
+</selection>
+    <section id="agradecimentos" aria-labelledby="tit-recursos"> 
+    <div style="height:200px"></div>
+        <div class="wrap">
+            <p class="legenda">AGRADECIMENTOS</p>
+        <div class="corpo-destaque">
+                <dl class="refs" >
+            <h1>
+                GAK AGRADECE
+            </h1>
+            <p>
+                Aos professores da ETEC de Hortolândia, nosso muito obrigado. Em especial à professora Fernanda, que nos orientou com os documentos do site e esteve por perto em cada decisão. Agradecemos também à Kelly, pelo apoio direto no desenvolvimento do site; à Priscila, pelas orientações no banco de dados; e à Juliana Baptista, pelas contribuições no design da página. Cada um de vocês fez diferença.
+                <br>
+                <br>
+                Somos estudantes de Desenvolvimento de Sistemas e construímos um site sobre a evolução da informática e a computação quântica. Mais do que o produto final, levamos o aprendizado de trabalhar em equipe, organizar etapas e transformar ideias em algo real. Obrigado por guiarem esse processo com atenção e confiança.
+                <br>
+                <br>
+                Assinam: Kemilly Ananias, Gabriela Tomé, Arthur Lima e Pedro Gobatti — 1° DSB-A, 2025.
+            </p>
+        </div>        
+    </div>
+</section>    
+<div style="height:300px"></div> 
+<div class="wrap">
+            <p class="legenda">FONTES</p> 
+    <section id="fontes" aria-labelledby="tit-recursos" class="corpo-destaque">
+        <dl class="refs">
+      <h1 class="texto-etec">
+        REFERÊNCIAS:
+      </h1>
+      <p>
+        Mundo Interativo Digital
+<br>
+        Alura
+<br>
+        International Business Machines Corporation (IBM)
+<br>
+        Venturus
+<br>
+        E-Safer
+<br>
+        <h1 class="texto-etec">
+             RECURSOS ULTILIZADOS
+        </h1>
+       
+        Framework: HTML5, CSS e JavaScript — utilizados para estruturar, estilizar e dar interatividade ao projeto, sem dependência de bibliotecas externas.
+<br>
+        HTML5: responsável pela marcação semântica e pela organização dos conteúdos.
+<br>
+        CSS: aplicado para a estilização, criação de layouts modernos e responsivos, além de efeitos visuais.
+<br>
+        JavaScript: usado para implementar funcionalidades, interações dinâmicas e manipulação do DOM.
+            </p>
+    </section>
+<a href="#home" class="to-top" id="to-top" aria-label="Voltar ao topo">↑ Topo</a>
+
+<!-- Back to top visibility-->
+ <script>
+  const toTop = document.getElementById('to-top');
+
+  const onScroll = () => {
+    if (window.scrollY > 300) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Se quiser garantir rolagem suave em todos os navegadores:
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+    <div style="height:100px"></div>
+    </div>
+    
+    <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+
+
+
+    </body>
+
+
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="gak_cinza.png">
+    <title>GAK — Contatos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+
+    </ul>
+  </li>
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  <script>
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+
+
+    <section id="contato">
+        <div class="conteudo-destaque">
+          <h2><i class="fas fa-address-card"></i> CONTATO</h2>
+          <br>
+          <p><i class="fas fa-envelope"></i> Email: contato@gak.com</p>
+            <p><i class="fas fa-phone"></i> Telefone: (19) 9283-5678</p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Endereço: ETEC de Hortolândia —
+              Rua Capitão Lourival Mey, 750
+            </p>
+    <br>
+        
+          <div class="info-contato">
+            <h2><i class="fas fa-envelope"></i> FEEDBACK</h2>
+            <p>
+            Deixe sua mensagem e avaliação sobre o site. Seu nome e email são
+            preenchidos automaticamente.
+          </p>
+<br>
+<form class="formulario-contato" id="feedbackForm">
+  <div class="grupo-campo">
+    <label for="nome">Nome:</label>
+    <input id="nome" name="nome" type="text" required placeholder="Digite seu nome" />
+  </div>
+
+  <div class="grupo-campo">
+    <label for="email">Email:</label>
+    <input id="email" name="email" type="email" required placeholder="Digite seu email" />
+  </div>
+<br>
+  <div class="grupo-campo">
+    <label for="mensagem">Mensagem:</label>
+    <textarea
+      id="mensagem"
+      name="mensagem"
+      required
+      placeholder="Escreva sua avaliação..."
+    ></textarea>
+  </div>
+  <div class="form-group rating">
+    <label>Avalie nosso site:</label><br />
+    <div class="stars" aria-label="Avaliação de 1 a 5">
+      <span data-value="1">&#9733;</span>
+      <span data-value="2">&#9733;</span>
+      <span data-value="3">&#9733;</span>
+      <span data-value="4">&#9733;</span>
+      <span data-value="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="estrelas" id="estrelas" required />
+  </div>
+
+  <button id="ver-linha" class="botao-contatos">Mandar Feedback</button>
+</form>
+
+<!-- Mensagem de sucesso -->
+<p
+  id="mensagem-sucesso"
+  style="display: none; color: #69db7c; margin-top: 12px; font-weight: 600;"
+>
+  ✅ Obrigado pelo seu feedback!
+</p>
+          
+      </div>
+    </section>
+
+    <footer>
+      <div id="rodape">
+        <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+        <p>Trabalho acadêmico sem fins lucrativos.</p>
+      </div>
+    </footer>
+
+    <!-- SCRIPT DE INTERAÇÃO -->
+<script>
+  // --- Estrelas interativas
+  const stars = document.querySelectorAll(".stars span");
+  const inputEstrelas = document.getElementById("estrelas");
+  stars.forEach((s) =>
+    s.addEventListener("click", () => {
+      const v = +s.dataset.value;
+      stars.forEach((x) =>
+        x.classList.toggle("active", +x.dataset.value <= v)
+      );
+      inputEstrelas.value = v;
+    })
+  );
+  
+  // --- Feedback local (sem servidor)
+  const form = document.getElementById("feedbackForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // Verifica se o formulário está completo
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    
+    // Mostra mensagem de sucesso
+    const msg = document.getElementById("mensagem-sucesso");
+    msg.style.display = "block";
+    
+    // Limpa os campos e estrelas
+    form.reset();
+    stars.forEach((x) => x.classList.remove("active"));
+    
+    // Esconde a mensagem depois de 4 segundos
+    setTimeout(() => {
+      msg.style.display = "none";
+    }, 4000);
+  });
+</script>
+
+<script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+
+
+  </body>
+</html>

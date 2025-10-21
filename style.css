@@ -1,0 +1,820 @@
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+  scroll-behavior: smooth;
+  margin: 0;
+  background:
+    /* Pontos claros de luz (efeito de brilho difuso) */
+    radial-gradient(500px 250px at 15% 20%, rgba(120, 210, 255, 0.25), transparent 70%),
+    radial-gradient(400px 200px at 85% 30%, rgba(150, 240, 255, 0.2), transparent 75%),
+    radial-gradient(300px 150px at 50% 80%, rgba(180, 255, 220, 0.18), transparent 70%),
+    
+    /* Tons principais do fundo */
+    radial-gradient(900px 450px at 80% 20%, color-mix(in oklab, #56e0ff 25%, transparent), transparent 60%),
+    radial-gradient(800px 400px at 20% 80%, color-mix(in oklab, #7cf3d2 18%, transparent), transparent 60%),
+    linear-gradient(180deg, #111b33 0%, #19294a 55%, #223764 100%);
+  
+  background-attachment: fixed;
+  color: #e9eef5;
+}
+
+#menu{
+    position: sticky; top: 0;
+    z-index: 50;
+    color: #2c364d4b;
+    line-height: 0.50; /*Puxa o texto para cima*/
+    background: color-mix(in oklab, #0f1115 90%, transparent);
+    /*oklab e um espaco de cor perceptual
+    e usado o color-mix na frente para o navegador misturar duas cores no espaco oklab em vez de simplesmente somar canais de RGB.*/
+   border-bottom: 1px solid; /*Linha sutil em baixo do menu*/
+   color:#2c364d;;
+}
+
+/*CONTEINER DO MENU*/
+.menu-list{
+    list-style:none; /*remove a bolinha e tambem desativa imagem de marcador e posicao do marcador.*/
+    margin:0; /*espaco externo*/ 
+    padding:0 50px; /*espaco interno*/
+    align-items: center; /* alinha verticalmente os itens */
+    display:flex; /*Organiza secoes internas*/
+    justify-content:space-between;
+    background:#0f1115;
+
+}
+
+/*ITENS E LINKS*/
+.menu-list a{
+    color:#a9b3c7;
+    text-decoration:none; 
+    font-weight: 600; 
+    letter-spacing:.3px; 
+    padding: 10px 8px;
+    border-radius:10px; /*cantos do menu*/
+}
+
+/*ESTADOS E ACESSIBILIDADE*/
+.menu-list a:hover,.menu-list a:focus{ 
+/*:hover links <a> dentro de um elemento com classe menu quando o mouse passa por cima.*/
+/*focus links <a> dentro da tag <menu> quando recebem foco via teclado.*/
+    color: #2563EB;
+    outline: none; /*Foco visivel*/
+    background: #1a2132;
+     
+}
+/*ICONES*/
+.menu-link{
+  display:flex;
+  align-items:flex-end;  /* coloca conteúdo no fundo da linha */
+  gap:8px;
+  height:40px;           /* garante altura fixa */
+}
+
+.menu-link svg{
+  transform: translateY(1px); /* empurra só o ícone para baixo */
+}
+.logo-menu{
+    transform: translateY(1px); /* empurra so o icone para baixo */
+}
+
+/* dropdown do usuário */
+.user-menu{ position:relative; }
+.user-toggle{ display:inline-flex; align-items:center; gap:8px; border-radius:10px; outline:0; }
+.user-toggle:focus{ box-shadow:0 0 0 3px color-mix(in oklab, #56e0ff 25%, transparent); }
+
+.user-dropdown{
+  position:absolute; right:0; top:calc(100% + 8px);
+  min-width:220px; margin:0; padding:6px; list-style:none; z-index:1000;
+  background:#151822; color:#e9eef5; border:1px solid #2c364d; border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  opacity:0; transform:scale(.98) translateY(-4px); pointer-events:none;
+  transition:opacity .12s ease, transform .12s ease;
+}
+.user-menu.open .user-dropdown{ opacity:1; transform:scale(1) translateY(0); pointer-events:auto; }
+
+.user-dropdown a,
+.user-dropdown button{
+  display:flex; align-items:center; gap:10px;
+  width:100%; padding:10px 10px; border-radius:10px;
+  background:transparent; color:#e9eef5; text-decoration:none; border:none; font:inherit; cursor:pointer;
+}
+.user-dropdown a:hover,
+.user-dropdown button:hover,
+.user-dropdown a:focus,
+.user-dropdown button:focus{
+  outline:0; background:color-mix(in oklab, #56e0ff 18%, transparent);
+}
+.user-sep{ height:1px; margin:6px; border:0; background:color-mix(in oklab, #2c364d 70%, transparent); }
+
+footer{ margin-top:auto; }
+
+#rodape {
+  width: 100%;
+  padding: 16px 12px;
+  border-top: 1px solid #2c364d;
+  color: #a9b3c7;
+  text-align: center;
+  font-size: 14px;
+  background: #0f1115;
+}
+
+/*VÍDEO COMPUTADOR QUANTICO*/
+
+.capa{ 
+  position:relative; 
+  min-height:70vh; 
+  overflow:hidden; 
+
+}
+.capa__video{ 
+  position:absolute; 
+  inset:0; width:100%; 
+  height:100%;
+  object-fit:cover; 
+}
+
+.capa__sobreposicao{
+  position:relative; z-index:1;
+   min-height:70vh;
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
+   justify-content:center;
+  gap:1rem; 
+  padding:2rem;
+  color:#fcfcfcce; 
+  text-align:center;
+  background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.35));
+}
+
+.titulo{ 
+  font-size:clamp(2rem, 5vw, 3rem); 
+  line-height:1.1; font-weight:800;
+  margin:0; }
+
+.subtitulo{ 
+  font-size:clamp(1rem, 2.5vw, 1.25rem); margin:0; opacity:.95; 
+}
+#botao{
+    position: sticky; top: 0;
+    z-index: 50;
+    color: #2c364d4b;
+    line-height: 0.50; /*Puxa o texto para cima*/
+    background: color-mix(in oklab, #0f1115 90%, transparent);
+    /*oklab e um espaco de cor perceptual
+    e usado o color-mix na frente para o navegador misturar duas cores no espaco oklab em vez de simplesmente somar canais de RGB.*/
+   border-bottom: 1px solid; /*Linha sutil em baixo do menu*/
+   color:"#2c364d;";
+}
+
+.botao-centro{
+    list-style:none; /*remove a bolinha e tambem desativa imagem de marcador e posicao do marcador.*/
+    margin:0; /*espaco externo*/ 
+    padding:0 50px; /*espaco interno*/
+    align-items: center; /* alinha verticalmente os itens */
+    display:flex; /*Organiza secoes internas*/
+    justify-content:space-between;
+    background:#0f111500;
+
+}
+
+/*ITENS E LINKS*/
+.botao-centro a{
+    color: #000;
+    text-decoration:none; 
+    font-weight: 600; 
+    letter-spacing:.3px; 
+    padding: 10px 8px;
+    border-radius:10px; /*cantos do menu*/
+}
+
+/*ESTADOS E ACESSIBILIDADE*/
+.botao-centro a:hover,.botao-centro a:focus{ 
+/*:hover links <a> dentro de um elemento com classe menu quando o mouse passa por cima.*/
+/*focus links <a> dentro da tag <menu> quando recebem foco via teclado.*/
+    color: #ff6b6b;
+    outline: none; /*Foco visivel*/
+    background: #1a213200;
+     
+}
+
+/*CONTATOS*/
+ /* pseudo-elemento sobre a arte de destaque (camada decorativa) */
+
+/* cartao de conteudo */
+.conteudo-destaque {
+  position: relative; /* referencia para posicionamentos internos */
+  z-index: 1; /* acima do fundo decorativo */
+  max-width: 760px; /* largura maxima do cartao */
+  margin: 32px auto; /* centraliza e da respiro vertical */
+  padding: 30px; /* espaco interno */
+  color: #a9b3c7; /* cor do texto */
+  background: color-mix( /* fundo translucido legivel */
+    in oklab, #1b2030 55%, transparent
+  );
+  border-radius: 12px;
+   border: 1px solid #2c364d; /* borda sutil */
+}
+
+/* titulo dentro do cartao */
+.conteudo-destaque h2 {
+  margin: 0 0 8px; /* remove margem superior e da respiro abaixo */
+}
+
+/* parágrafos dentro do cartao */
+.conteudo-destaque p { 
+  margin: 0 0 16px; /* espacamento inferior */
+  color: #a9b3c7; /* tom de texto mais suave */
+}
+
+/* formulário: grade vertical com espacamento */
+.formulario-contato {
+  display: grid; /* layout em grid */
+  gap: 14px; /* espaco entre grupos de campos */
+}
+
+/* grupo label + campo */
+.grupo-campo {
+  display: grid; /* empilha label e campo */
+  gap: 10px; /* espaco entre eles */
+}
+
+/* campos de entrada e area de texto */
+.formulario-contato input,
+.formulario-contato textarea {
+  width: 90%; /* ocupa toda a largura */
+  padding: 12px 14px; /* área clicável confortável */
+  border-radius: 12px; 
+  border: 1px solid #2c364d; /* borda sutil */
+  background: #151822; /* fundo do campo */
+  color:#a9b3c7; /* cor do texto */
+}
+
+/* altura minima para a mensagem */
+.formulario-contato textarea {
+  min-height: 140px; /* caixa mais alta para escrever */
+}
+
+.stars{display:inline-flex;gap:4px;cursor:pointer} 
+.stars span{font-size:30px;color:#888} 
+.stars span.active{color:#ffd166}
+
+.botao-contatos{
+  appearance:none;
+  border:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  padding:.75rem 1rem;
+  border-radius:12px;
+  font:600 .95rem/1.2 system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color:#ffffff;
+  background:linear-gradient(135deg, #7cf3d2, #2c364d);
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow:0 8px 24px rgb(0 0 0 / .15);
+  cursor:pointer;
+  transition:transform .15s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+.botao-contatos:hover{ transform:translateY(-1px); filter:brightness(1.03); box-shadow:0 10px 28px rgb(0 0 0 / .2); }
+.botao-contatos:active{ transform:translateY(0); filter:brightness(.97); box-shadow:0 6px 16px rgb(0 0 0 / .14); }
+.botao-contatos:focus-visible{ outline:2px solid #9adbed; outline-offset:2px; }
+
+.botao-contatos[disabled],
+.botao-contatos[aria-disabled="true"]{ opacity:.6; pointer-events:none; }
+
+/* tamanhos */
+.botao-contatos--sm{ padding:.5rem .75rem; font-size:.875rem; }
+.botao-contatos--lg{ padding:.875rem 1.25rem; font-size:1.05rem; }
+
+/* largura total */
+.botao-contatos--block{ display:flex; width:100%; }
+
+/* menos movimento */
+@media (prefers-reduced-motion: reduce){
+  .botao-contatos{ transition:none; }
+}
+
+/* tema escuro */
+@media (prefers-color-scheme: dark){
+  .botao-contatos{
+    background:linear-gradient(135deg, #6be4c4, #1f2736);
+  }
+}
+
+/* bloco com informacoes de contato */
+.info-contato {
+  margin-top: 20px; /* separacao do formulario */
+  color: #a9b3c7; /* tom mais suave */
+}
+
+/* espaco entre icone e texto */
+.info-contato i {
+  margin-right: 6px; /* respiro a direita do icone */
+}
+
+/* ETEC */
+.corpo-destaque{
+  position:relative; max-width:1150px; margin:32px auto; padding:30px;
+  color:#a9b3c7;
+  background:color-mix(in oklab,#1b2030 55%, transparent);
+  border:1px solid #2c364d; border-radius:12px;
+  display:flex; gap:24px; align-items:flex-start;
+}
+
+/* COLUNAS */
+.corpo-destaque .texto{ flex:1 1 0; min-width:240px; }
+.corpo-destaque .midia{
+  /* pequeno e responsivo */
+  flex:0 0 clamp(140px, 20vw, 360px);
+  margin-top:150px; 
+
+}
+
+/* MÍDIA */
+.corpo-destaque .midia video,
+.corpo-destaque .midia iframe{
+  width:100%; height:auto; aspect-ratio:16/9; display:block; border-radius:12px;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .corpo-destaque{ flex-direction:column; }
+  .corpo-destaque .midia{ flex-basis:auto; width:100%; }
+}
+
+/* TÍTULO */
+.titulo-etec{
+  text-align:center; margin:0 0 12px; padding:2rem 0 1rem; color:#fcfcfcce;
+}
+
+/*INFORMÁTICA*/
+/* Linha do tempo: cria espaço à esquerda para o “traço” vertical */
+.linha-do-tempo{
+  position: relative;
+  padding-left: 22px;      /* espaço para a linha e marcadores */
+}
+
+/* Traço vertical da linha do tempo */
+.linha-do-tempo::before{
+  content: "";
+  position: absolute;
+  left: 6px;/* centraliza em relação aos pontos */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #2c3462; /* mesma cor da borda para coerência */
+}
+
+/* Etapa individual da linha do tempo */
+.linha-do-tempo .etapa{
+  position: relative;
+  margin: 14px 0 20px;     /* respiro entre etapas */
+  padding-left: 8px;       /* afasta o texto do marcador */
+}
+
+/* Marcador circular de cada etapa */
+.linha-do-tempo .etapa::before{
+  content: "";
+  position: absolute;
+  left: -16px;             /* alinha sobre a linha vertical */
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #7cf3d2;        /* cor de destaque */
+  box-shadow: 0 0 0 4px #56e0ff22;  /* “aura” sutil */
+}
+.linha-blur{
+  filter: blur(8px);
+  transition: filter .4s ease;
+  pointer-events: none;      /* segurança extra além de inert */
+  user-select: none;
+}
+
+/* acessibilidade: sem animação para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce){
+  .linha-blur{ transition:none; }
+}
+/*FEDITOS*/
+.resumo{
+  color:#a9b3c7;
+  margin:0 0 16px
+}
+
+/* TOC */
+.toc{margin:8px 0 24px}
+.toc a{
+  display:inline-block;
+  color:inherit; text-decoration:none;
+  padding:4px 50px; border-radius:16px
+}
+.toc a:hover,.toc a:focus-visible{
+  outline:2px solid currentColor; outline-offset:2px
+}
+
+/* faixa em no sumario */
+.faixa-cinza{
+  width:100%;
+  background:linear-gradient(180deg,
+    color-mix(in oklab, #1b2030 78%, transparent),
+    color-mix(in oklab, #1b2030 78%, transparent));
+  border-top:1px solid #2c364d;
+  border-bottom:1px solid color-mix(in oklab, #2c364d 65%, transparent);
+  padding:2px 0;
+  backdrop-filter: blur(2px);
+  color:#e9eef5; /* define a cor herdada dos links */
+}
+
+.wrap{max-width:1160px;margin:32px auto;padding:0 16px}
+
+.legenda{
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#a9b3c7;
+  font: size 20px;
+}
+.legenda::after{
+  content:"";
+  display:inline-block;
+  width:96px;height:2px;
+  background:#ff6b6b;
+  margin-left:12px;
+  vertical-align:middle;
+  border-radius:2px
+}
+
+/* Carrosséis sem folga lateral */
+.alunos-swiper, .profs-swiper{padding:24px 0 48px}
+
+/* blur e transições */
+.alunos-swiper.swiper-initialized .swiper-slide,
+.profs-swiper.swiper-initialized .swiper-slide{
+  transform: scale(.97);
+  filter: blur(1px) grayscale(.25);
+  opacity: .75;
+  transition: transform .35s, filter .35s, opacity .35s;
+  will-change: transform, filter, opacity;
+}
+.alunos-swiper.swiper-initialized .swiper-slide-prev,
+.alunos-swiper.swiper-initialized .swiper-slide-next,
+.profs-swiper.swiper-initialized .swiper-slide-prev,
+.profs-swiper.swiper-initialized .swiper-slide-next{
+  transform: scale(.985);
+  filter: blur(.5px) grayscale(.12);
+  opacity: .9;
+}
+.alunos-swiper .swiper-slide-active,
+.profs-swiper .swiper-slide-active{
+  transform: scale(1);
+  filter: none;
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce){
+  .alunos-swiper .swiper-slide,
+  .profs-swiper .swiper-slide{transition:none;}
+}
+
+/* Cartão */
+.card{
+  background:linear-gradient(
+    180deg,
+    color-mix(in oklab,#151822 92%,transparent),
+    color-mix(in oklab,#1b2030 92%,transparent)
+  );
+  border:1px solid #2c364d;
+  border-radius:16px;
+  box-shadow:0 20px 60px #0002;
+  padding:120px;
+  text-align:center;
+  color:#e9eef5
+}
+.avatar{
+  width:96px;height:96px;border-radius:50%;
+  display:block;margin:8px auto 12px;
+  box-shadow:0 6px 20px #0002
+}
+.papel{font-size:14px;color:#ff6b6b;margin:0 0 12px}
+.texto{color:#a9b3c7;line-height:1.6;margin:0}
+
+/* Paginação e setas */
+.swiper-pagination-bullet{
+  background:color-mix(in oklab,#a9b3c7 45%, transparent);
+  opacity:.6
+}
+.swiper-pagination-bullet-active{background:#56e0ff;opacity:1}
+.swiper-button-prev::after,.swiper-button-next::after{content:""}
+.swiper-button-prev,.swiper-button-next{
+  width:44px;height:44px;border-radius:50%;
+  background:color-mix(in oklab,#1b2030 75%, transparent);
+  border:1px solid #2c364d;
+  box-shadow:0 6px 20px #0002
+}
+.swiper-button-prev{
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z'/></svg>") center/20px no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z'/></svg>") center/20px no-repeat;
+  background-color:#7cf3d2
+}
+.swiper-button-next{
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z'/></svg>") center/20px no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z'/></svg>") center/20px no-repeat;
+  background-color:#7cf3d2
+}
+.swiper-button-prev:hover,.swiper-button-next:hover{
+  background:color-mix(in oklab,#7cf3d2 35%, transparent)
+}
+/*FAQ*/
+.card-atalho{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; text-decoration:none; text-align:center;
+  padding:22px 18px; border-radius:14px;
+  background: color-mix(in oklab, #ffffff 4%, #1b2030);
+  border:1px solid #2c364d;                              
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  color: #e9eef5;                                         
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.card-atalho i{
+  font-size:26px;
+  color: color-mix(in oklab, #e9eef5 70%, #2c364d);        
+}
+.card-atalho span{
+  font-weight:700;
+  color: color-mix(in oklab, #e9eef5 88%, #a9b3c7);  
+}
+.card-atalho:hover,
+.card-atalho:focus{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+  border-color: color-mix(in oklab, #56e0ff 40%, #2c364d);
+  outline: none;
+}
+
+/* search */
+.search{
+display:flex; gap:10px; align-items:center; justify-content:center;
+}
+.search input {
+  width: min(720px, 100%);
+  background: #151822;
+  color: #e9eef5;
+  border: 1px solid #2c364d;
+  border-radius: 12px;
+  padding: 12px 14px 12px 40px;
+  outline: none;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.search input:focus {
+  border-color: #56e0ff;
+  box-shadow: 0 0 0 3px color-mix(in oklab, #56e0ff 25%, transparent);
+}
+
+.search .icon {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+/* container da seção */
+.atalhos{ padding:28px 0; background: color-mix(in oklab, #151822 85%, transparent); }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 20px; }
+
+/* lista em grade e sem marcadores */
+.grid-atalhos{
+  list-style:none;      /* remove bolinhas */
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:18px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+ .faq-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+ .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #2c364d;
+            background-color:#1b2030;
+            border-radius: 5px;
+
+            padding: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color:#2c364d;
+        }
+
+        .faq-item h3 {
+            margin: 0;
+            font-size: 20px;
+            color:#e9eef5;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            margin: 10px 0 0;
+            font-size:20px;
+            color: #a9b3c7;
+            display: none;
+        }
+
+        .faq-item.open p {
+            display: block;
+        }
+
+        .faq-item:focus-within {
+            border: 2px solid; 
+            color: #56e0ff;
+        }
+
+        .faq-item:focus-within h3 {
+            color: #7cf3d2;
+        }
+        
+        /* contêiner central e grid com 3 colunas */
+        
+.wrap-quantico{ max-width:1120px; margin:0 auto; padding:0 20px; }
+.grid-quantico{
+  list-style:none; margin:0 auto; padding:0;
+  display:grid; gap:24px;
+  grid-template-columns:repeat(3, minmax(280px, 1fr));
+  justify-content:center;
+}
+
+/* centraliza e define 3 colunas */
+.alg-grid{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(3, minmax(320px, 1fr));
+  max-width:1120px;      /* largura do conjunto */
+  margin:0 auto;         /* centraliza na página */
+  padding:0 16px;        /* respiro lateral */
+}
+
+/* responsivo */
+@media (max-width:980px){
+  .alg-grid{ grid-template-columns:repeat(2, minmax(280px,1fr)); }
+}
+@media (max-width:600px){
+  .alg-grid{ grid-template-columns:1fr; }
+}
+
+/* cartão */
+.alg-card{
+  background:#1b2030; border:1px solid #2c364d; border-radius:14px;
+  color:#e9eef5; padding:18px 20px; box-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+.alg-card h3{ margin:0 0 10px; font-weight:800; color:#e9eef5; }
+.alg-card dl{
+  margin:0; display:grid; grid-template-columns:110px 1fr; column-gap:10px; row-gap:6px;
+}
+.alg-card dt{ color:#a9b3c7; font-weight:700; }
+.alg-card dd{ margin:0; color:#e9eef5; }
+
+/*QUIZ*/
+.quiz{width:min(880px,100%); background:#151822; border:1px solid #2c364d;
+        border-radius:18px; box-shadow:0 18px 60px rgba(0,0,0,.35); overflow:hidden}
+  header{padding:16px 20px; border-bottom:1px solid #2c364d; display:flex; gap:10px; align-items:center}
+  .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,#56e0ff,#7cf3d2)}
+  header h1{ margin:0; font-size:24px; font-weight:700; }
+  .progress{margin-left:auto; font-size:20px; color:#a9b3c7}
+  .bar{height:8px;background:#1b2030;border:1px solid #2c364d;border-radius:10px;overflow:hidden;margin:0 20px}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#56e0ff,#7cf3d2)}
+  main{padding:20px}
+  .card{background:color-mix(in oklab, #1b2030 80%, transparent); border:1px solid #2c364d;
+        border-radius:14px; padding:18px}
+  .q-title{ font-size:22px; font-weight:600; }
+  .q-desc{margin:0 0 14px; color:#a9b3c7; font-size:14px}
+  .opts{display:grid; gap:10px; margin:0; padding:0; list-style:none}
+  .opt{display:flex; gap:12px; align-items:flex-start; padding:12px; border:1px solid #2c364d;
+       border-radius:12px; background:#151822; cursor:pointer; transition:border-color .12s, box-shadow .12s, transform .05s}
+  .opt:hover{border-color:#56e0ff}
+  .opt:active{transform:translateY(1px)}
+  .opt input{margin-top:3px; accent-color:#56e0ff}
+  .opt.correct{border-color:#69db7c; box-shadow:0 0 0 3px color-mix(in oklab, #69db7c 20%, transparent)}
+  .opt.wrong{border-color:#ff6b6b; box-shadow:0 0 0 3px color-mix(in oklab, #ff6b6b 20%, transparent)}
+  .feedback{margin-top:10px; font-size:30px; min-height:1.2em}
+  .feedback.ok{color:#69db7c} .feedback.err{color:#ff6b6b}
+  .controls{display:flex; gap:10px; margin-top:16px}
+  button{height:44px; padding:0 14px; border-radius:12px; border:1px solid #2c364d; cursor:pointer; font-weight:800;
+          background:linear-gradient(135deg,#56e0ff,#7cf3d2); color:#041016;
+          transition:filter .12s, transform .05s, box-shadow .12s}
+  button:hover{filter:saturate(1.06); box-shadow:0 8px 20px rgba(0,0,0,.35)}
+  button:active{transform:translateY(1px)}
+  .ghost{background:transparent; color:#e9eef5} .ghost:hover{box-shadow:0 8px 20px rgba(0,0,0,.25)}
+  button[disabled]{filter:grayscale(1); opacity:.6; cursor:not-allowed}
+  .result{display:none; padding:20px}
+  .score{display:flex; gap:12px; align-items:center; justify-content:center; background:#1b2030;
+         border:1px solid #2c364d; border-radius:14px; padding:14px; margin-bottom:14px}
+
+  
+/* Linha do tempo - Eras */
+.era {
+  width: 1100px;
+  max-width: 1100px;
+  height: 500px;
+  padding: 40px 60px;
+  border-radius: 25px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+
+/* Lado esquerdo da era */
+.lado-esquerdo img {
+  width: 290px;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Linha divisória */
+.linha {
+  width: 2px;
+  background-color: #111;
+  height: 100%;
+}
+
+/* Conteúdo da era */
+.conteudo-era {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.conteudo-era h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.conteudo-era p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: justify;
+  overflow: auto;
+  color: #222;
+}
+
+/* Cores e fontes das eras */
+#era1 {
+  background: #f2e8c0 url("texturas/papel.png") center/cover;
+  font-family: 'Leckerli One', cursive;
+}
+
+#era2 {
+  background: #c04338 url("texturas/fumaca.png") center/cover;
+  font-family: "League Spartan";
+  color: white;
+}
+
+#era3 {
+  background: #d9d9d9 url("texturas/retro.png") center/cover;
+  font-family: 'Baloo 2';
+}
+
+#era4 {
+  background: #cdffd8 url("texturas/binario.png") center/cover;
+  font-family: 'Great Vibes';
+}
+
+#era5 {
+  background: #ffde59 url("texturas/papel.png") center/cover;
+  font-family: 'Playfair Display';
+}
+
+#era6 {
+  background: #d9d9d9 url("texturas/futurista.png") center/cover;
+  font-family: 'JetBrains Mono';
+}
+
+/* Animações */
+.anda {
+  animation: andar 0.8s forwards;
+}
+
+@keyframes andar {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50px); }
+}
+
+ /* Back to top */
+    .to-top{ position:fixed; 
+      right: 18px; bottom: 18px; padding: 10px 12px; 
+      border-radius: 12px; border:1px solid color( #2c364d);
+      background: #1b2030; color: #e9eef5; text-decoration:none; font-weight:700; opacity:.0; pointer-events:none; transition:.25s ease; }
+    .to-top.show{ opacity:1; pointer-events:auto; }

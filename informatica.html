@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name ="author" content="Gabriela Belome Tome">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="gak_cinza.png">
+        <link rel="stylesheet" href="style.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!--Biblioteca para os icones-->  
+        <title>GAK</title>
+        
+    </head>
+
+    <body >
+ <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+  
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+
+ <div style="height:140px"></div>
+        <center>
+          <section class="atalhos">
+               <div style="height:150px"></div>
+            <div>
+                <h1 class="titulo-etec"><i class="fa-solid fa-timeline" style="color:#a9b3c7"></i>
+                    EVOLUÇÃO DA INFORMÁTICA
+                </h1>
+                <p style="font-size: 20px; line-height: 1.9;">
+                    A tecnologia está em constante transformação e tem desempenhado um papel fundamental no desenvolvimento da sociedade ao longo dos séculos. 
+                    <br>
+                    Esta linha do tempo apresenta os principais marcos da evolução tecnológica, desde as invenções mais antigas até os avanços mais recentes. 
+                    <br>
+                    Acompanhar essa trajetória é entender como ideias inovadoras moldaram o mundo em que vivemos e continuam a influenciar nosso futuro.
+                </p>
+                <button id="ver-linha" class="botao-contatos"
+                    aria-controls="linha-tempo"
+                    aria-expanded="false">
+                        Ver linha do tempo
+                </button>
+                <div style="height:150px"></div>
+          </section>
+
+ <div style="height:180px"></div>
+
+        </center>
+                <!-- abaixo do botão -->
+                <div id="linha-tempo" class="corpo-destaque linha-blur" inert>
+                <div class="linha-do-tempo" aria-label="Linha do tempo">
+
+                <div class="etapa">
+                    <div class="era" id="era1">
+          <div class="lado-esquerdo">
+    <img src="caminho.png" alt="caminho">
+</div>
+
+<div class="linha"></div> <!-- Linha separadora -->
+
+        <div class="conteudo-era">
+          <h2>Ábaco Mesopotâmia (1791-1891)</h2>
+          <p>A computação tem origem em estudos muito antigos, aproveitando diferentes áreas do conhecimento, como a matemática, filosofia e a física. O primeiro mecanismo precedente ao computador foi o ábaco, que tinha o objetivo de auxiliar cálculos matemáticos, para não depender apenas da mente.</p>
+        </div>
+      </div>
+                </div>
+
+                <div class="etapa">
+                     <div class="era" id="era2">
+          <div class="lado-esquerdo">
+    <img src="caminho2.png" alt="caminho2" >
+</div>
+<div class="linha"></div> <!-- Linha separadora -->
+        <div class="conteudo-era">
+          <h2>Alan Turing (1936)</h2>
+          <p>Colocou em funcionamento um computador eletrônico ultrassecreto COLOSSUS, que funcionava com o único objetivo de quebrar a criptografia da máquina alemã ENIGMA.</p>
+        </div>
+      </div>
+</div>
+
+                <div class="etapa">
+                    <div class="era" id="era3">
+          
+          <div class="lado-esquerdo">
+    
+    <img src="caminho3.png" alt="caminho3" >
+</div>
+<div class="linha"></div> <!-- Linha separadora -->
+        <div class="conteudo-era">
+            
+          <h2>Charles Babbage (1791-1891)</h2>
+          <p>Foi criado dois computadores “Máquina de diferenças” e a “Máquina Analítica”. A máquina de diferença realizava cálculos para marinha inglesa, enquanto a Máquina Analítica foi a primeira máquina a ser programável da História, e quem a programou foi Ada Lovelace, sendo a primeira pessoa a programar um computador.</p>
+        </div>
+      </div>
+                </div>
+
+                <div class="etapa">
+                   <div class="era" id="era4">
+          
+          <div class="lado-esquerdo">
+    
+    <img src="caminho4.png" alt="caminho4" >
+</div>
+<div class="linha"></div> <!-- Linha separadora -->
+        <div class="conteudo-era">
+          <h2>John Vincen Atasoff (1939)</h2>
+          <p>Foi projetado o primeiro computador eletrônico, ao invés de mecânico, decidiu utilizar eletricidade no lugar de processos mecânicos, adotando o sistema binário, e capacitores para funcionarem como a memória para guardarem a energia. Sua função era resolver equações algébricas e foi projetado para automação de cálculos de forma mais eficiente do que os métodos manuais da época.</p>
+        </div>
+    </div>
+                </div>
+
+                <div class="etapa">
+                    <div class="era" id="era5">
+          
+          <div class="lado-esquerdo">
+    
+    <img src="caminho5.png" alt="caminho5">
+</div>
+<div class="linha"></div> <!-- Linha separadora -->
+        <div class="conteudo-era">
+          <h2>John Mauchly e John P. Eckert</h2>
+          <p>O trabalho de Atanasoff chamou atenção dos criadores, sendo assim criado o ENIAC, que surgiu para ser utilizado na criação de tabelas de alcance e trajetória para armas balísticas, mas só foi finalizado após o fim da guerra (1943 até 1946).</p>
+        </div>
+      </div>
+                </div>
+
+                <div class="etapa">
+                   <div class="era" id="era6">
+          
+          <div class="lado-esquerdo">
+    
+    <img src="caminho6.png" alt="caminho6" >
+</div>
+<div class="linha"></div> <!-- Linha separadora -->
+        <div class="conteudo-era">
+          <h2>IBM</h2>
+          <p>A IBM lançou o IBM-701 em 1953, que era direcionado a aplicações científicas, e em 1955, o IBM-702, com recursos de hardwares voltados a aplicações comerciais. Em 1956, lançou o IBM-704, com 4K palavras de memória e em 1958, lançou o IBM-709, que era a mais aperfeiçoada.</p>
+        </div>
+      </div>
+  </div>
+                </div>
+            </div>
+        </div>
+   
+        
+    <script>
+        const btn  = document.getElementById('ver-linha');
+        const alvo = document.getElementById('linha-tempo');
+
+        btn.addEventListener('click', () => {
+        alvo.classList.remove('linha-blur'); // desembaça
+        alvo.removeAttribute('inert');       // libera foco/teclado
+        btn.setAttribute('aria-expanded','true');
+        alvo.scrollIntoView({ behavior:'smooth', block:'start' }); // rola até a seção
+        });
+    </script>
+
+    <a href="#home" class="to-top" id="to-top" aria-label="Voltar ao topo">↑ Topo</a>
+
+    <!-- Back to top visibility-->
+ <script>
+  const toTop = document.getElementById('to-top');
+
+  const onScroll = () => {
+    if (window.scrollY > 300) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Se quiser garantir rolagem suave em todos os navegadores:
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+            
+    <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+  </footer>
+
+<script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+
+
+    </body>
+
+
+
+</html>

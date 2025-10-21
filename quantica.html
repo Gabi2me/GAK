@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name ="author" content="Gabriela Belome Tome">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="gak_cinza.png">
+        <link rel="stylesheet" href="style.css">
+        <title>GAK</title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!--Biblioteca para os icones-->  
+    </head>
+
+    <body >
+    <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+          
+
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+               
+                              <li>
+                 <a href="faq.html">FAQ</a>
+                 
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+  
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+
+  <section class="capa">
+
+    <video class="capa__video" autoplay muted loop playsinline>
+      <source src="teste.mp4" type="video/mp4" />
+    </video>
+
+    <div class="capa__sobreposicao">
+      <h1 class="titulo">COMPUTAÇÃO QUÂNTICA</h1>
+      <p class="subtitulo">Explorando a próxima fronteira da computação</p>
+      <div class="botao-centro">
+        <li>
+            <a href="videoplayback.mp4" target="_blank">ASSISTA TAMBÉM AO VÍDEO</a>
+        </li>
+      </div>
+    </div> 
+
+  </section>
+       <div style="height:60px"></div>
+    <div class="corpo-destaque">
+
+        <div class="texto">
+           <h1 class="titulo-etec">O QUE É COMPUTAÇÃO QUÂNTICA?</h1>
+
+               <p>A computação quântica é um campo emergente da ciência e da engenharia da computação que aproveita as qualidades únicas da mecânica quântica para 
+                    resolver problemas além da capacidade até mesmo dos computadores clássicos mais poderosos. O campo da computação quântica inclui uma variedade de 
+                    disciplinas, incluindo hardware quântico e algoritmos quânticos. Embora ainda esteja em desenvolvimento, a tecnologia quântica em breve será capaz 
+                    de resolver problemas complexos que os supercomputadores clássicos não conseguem resolver (ou não conseguem resolver com a rapidez necessária). 
+                    Utilizando a física quântica, computadores quânticos de grande escala seriam capazes de resolver certos problemas complexos muitas vezes mais rápido 
+                    do que as máquinas clássicas modernas. Com um computador quântico, alguns problemas que podem levar milhares de anos para serem resolvidos por um 
+                    computador clássico podem ser resolvidos em questão de minutos ou horas. A Mecânica Quântica, o estudo da física em escalas muito pequenas, revela
+                     princípios naturais fundamentais surpreendentes. Os computadores quânticos utilizam especificamente esses fenômenos para acessar métodos matemáticos
+                      de resolução de problemas não disponíveis com a computação clássica somente.</p>
+          </div>
+
+        </div>
+    </div>
+    </div>
+    
+
+     <section class="atalhos">
+  <div class="wrap-quantico">
+    <ul class="grid-quantico">
+      <li>
+        <a class="card-quantico">
+          <i class="fa-solid fa-coins fa-flip" style="color:#e9eef5"></i>
+          <h3>Qubits</h3>
+          <p>Unidades fundamentais da computação quântica que podem existir em múltiplos estados simultaneamente através da superposição.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card-quantico">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>Superposição</h3>
+          <p>Capacidade de um qubit de representar 0, 1 ou ambos ao mesmo tempo, permitindo processamento paralelo massivo.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card-quantico">
+          <i class="fa-solid fa-link"></i>
+          <h3>Emaranhamento</h3>
+          <p>Fenômeno onde qubits ficam correlacionados, permitindo que ações em um afetem instantaneamente o outro, mesmo à distância.</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+ <div style="height:60px"></div>
+    <div class="corpo-destaque">
+
+        <div class="texto">
+           <h1 class="titulo-etec">EMPRESAS QUE UTILIZAM</h1>
+
+               <h3>Plataformas e hardware</h3>
+
+<p>
+     IBM: oferece o IBM Quantum e Qiskit. Usa e fornece hardware para simulação de materiais, química (catalisadores, baterias), otimização e finanças. Trabalha forte em correção de erros.
+     <br>
+     <br>
+     Microsoft: Azure Quantum integra hardware de parceiros (Quantinuum, IonQ, Rigetti) e simuladores. Foco em algoritmos, otimização industrial, finanças e pesquisa em qubits topológicos.
+     <br>
+     <br>
+     Google: desenvolve o processador Sycamore. Pesquisa simulação quântica de materiais, otimização combinatória e técnicas de correção de erros.
+     <br>
+     <br>
+     Amazon (AWS): Amazon Braket orquestra acesso a vários hardwares. Casos de uso típicos: roteamento/logística, portfolio optimization e química computacional.
+     <br>
+     <br>
+     Quantinuum / IonQ / Rigetti / D-Wave: fornecedores usados por empresas para testes em otimização, machine learning quântico e química.
+</p>
+
+<h3>Indústria e manufatura</h3>
+<p>
+      BMW: planejamento e sequenciamento de produção, layout e alocação de componentes, otimização de logística e estudo de materiais para baterias.
+     <br>
+     <br>
+     Volkswagen: otimização de tráfego urbano e carregamento de frotas elétricas, roteamento e logística.
+     <br>
+     <br>
+     Airbus: design e simulação de materiais, carregamento de carga, planejamento de rotas e escalas.
+     <br>
+     <br>
+     Daimler/Mercedes-Benz: simulação de química para baterias e células de combustível, otimização de cadeia de suprimentos.
+     <br>
+     <br>
+     BASF: descoberta de catalisadores e materiais, simulações químicas difíceis para HPC clássico.
+</p>
+    
+<h3>Finanças</h3>
+<p>
+     JPMorgan Chase: otimização de portfólios, precificação de derivativos, detecção de risco e fraudes com algoritmos variacionais.
+     <br>
+     <br>
+     Goldman Sachs: algoritmos para derivativos e risco; aceleração de métodos de Monte Carlo.
+     <br>
+     <br>
+     HSBC/Barclays: pilotos em otimização de carteiras, liquidez e compliance.
+</p>
+     
+<h3>Saúde e química</h3>
+<p>
+     Boehringer Ingelheim: simulação de estruturas eletrônicas de moléculas para descoberta de fármacos.
+     <br>
+     <br>
+     Roche / Merck: química quântica aplicada a design de fármacos e materiais.
+     <br>
+     <br>
+     <h3>Energia e logística</h3>
+     ExxonMobil / Shell: modelagem de reações químicas, captura de carbono, otimização de operações.
+     <br>
+     <br>
+     DHL / FedEx: roteamento, alocação de frota e janelas de entrega.
+</p>
+          </div>
+
+        </div>
+    </div>
+    </div>
+
+    
+  <section class="algoritmos">
+  <h1 class="titulo-etec"><i class="fas fa-code"></i> ALGORITMOS QUÂNTICOS</h1>
+
+  <div class="alg-grid">
+    <article class="alg-card">
+      <h3>Algoritmo de Shor</h3>
+      <dl>
+        <dt>Função</dt><dd>Fatoração de números inteiros.</dd>
+        <dt>Importância</dt><dd>Base para quebrar esquemas como RSA.</dd>
+        <dt>Vantagem</dt><dd>Exponencial sobre métodos clássicos.</dd>
+      </dl>
+    </article>
+
+    <article class="alg-card">
+      <h3>Algoritmo de Grover</h3>
+      <dl>
+        <dt>Função</dt><dd>Busca em bancos de dados não estruturados.</dd>
+        <dt>Importância</dt><dd>Acelera busca e otimização.</dd>
+        <dt>Vantagem</dt><dd>Quadrática sobre algoritmos clássicos.</dd>
+      </dl>
+    </article>
+
+    <article class="alg-card">
+      <h3>Quantum Fourier Transform</h3>
+      <dl>
+        <dt>Função</dt><dd>Transformada de Fourier quântica.</dd>
+        <dt>Importância</dt><dd>Sub-rotina central de vários algoritmos.</dd>
+        <dt>Vantagem</dt><dd>Implementação eficiente em circuitos quânticos.</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+<div style="height: 100px"></div> 
+<center>
+     <div class="quiz" id="app">
+     <header>
+     <span class="dot"></span><h1>Quiz de Conhecimentos Gerais — Computação Quântica</h1>
+     <div class="progress" id="prog">1/10</div>
+     </header>
+     <div class="bar"><i id="bar"></i></div>
+
+
+     <main>
+     <div class="card" id="qcard" role="group" aria-labelledby="qtitle">
+     <h2 class="q-title" id="qtitle">Pergunta</h2>
+     <p class="q-desc" id="qdesc"></p>
+     <ul class="opts" id="opts"></ul>
+     <div class="feedback" id="fb"></div>
+     <div class="controls">
+     <button class="ghost" id="prev">Voltar</button>
+     <button id="check" disabled>Confirmar</button>
+     <button id="next" disabled>Próxima</button>
+     </div>
+     </div>
+     </main>
+
+
+     <section class="result" id="result">
+     <div class="score"><b id="scoreTxt">0/10</b><span id="msg"></span></div>
+     <div class="controls" style="justify-content:center">
+     <button id="retry">Refazer</button>
+     </div>
+     </section>
+     </div>
+
+
+</center>
+
+     <script>
+     const qs = [
+     { t:'O que é um qubit?', d:'Conceito básico.',
+     a:['Bit clássico','Transistor','Bit quântico em superposição','Byte'], c:2,
+     e:'Qubits podem estar em superposição.' },
+     { t:'Fenômeno que correlaciona qubits à distância:', d:'',
+     a:['Tunelamento','Interferência','Emaranhamento','Difração'], c:2,
+     e:'Emaranhamento cria correlações não clássicas.' },
+     { t:'Algoritmo com aceleração quadrática em busca:', d:'',
+     a:['Shor','Grover','Dijkstra','Bellman-Ford'], c:1,
+     e:'Grover reduz de O(N) para ~O(√N).'},
+     { t:'Qual área é mais promissora para ganhos quânticos hoje?', d:'',
+     a:['Renderização 3D','Jogos casuais','Otimização e química computacional','Edição de vídeo'], c:2,
+     e:'Simulação de moléculas e otimização combinatória são alvos atuais.' },
+     { t:'O que a Transformada de Fourier Quântica (QFT) fundamenta?', d:'',
+     a:['AES','RSA clássico','Shor','Huffman'], c:2,
+     e:'A QFT é componente central do algoritmo de Shor.' },
+     { t:'Por que decoerência é um problema?', d:'',
+     a:['Aumenta a superposição','Facilita o emaranhamento','Causa perda de informação quântica','Diminui a temperatura'], c:2,
+     e:'Interações com o ambiente destroem estados quânticos.' },
+     { t:'Qubits supercondutores operam tipicamente em:', d:'',
+     a:['Temperatura ambiente','Centenas de Kelvin','Milikelvin (muito frio)','Milhões de Kelvin'], c:2,
+     e:'Necessitam criogenia em diluição.' },
+     { t:'Vantagem típica de íons aprisionados:', d:'',
+     a:['Gates mais rápidos porém ruidosos','Longa coerência e alta fidelidade','Baixa necessidade de vácuo','Operação óptica simples'], c:1,
+     e:'Íons têm coerência longa e medições precisas.' },
+     { t:'Interferência em algoritmos quânticos serve para:', d:'',
+     a:['Aquecer o chip','Cancelar e reforçar amplitudes','Medir mais rápido','Dobrar qubits'], c:1,
+     e:'Cancelando caminhos ruins e reforçando os bons.' },
+     { t:'Em criptografia pós-quântica, o objetivo é:', d:'',
+     a:['Criar qubits de silício','Proteger contra Shor e Grover','Aumentar clocks de CPU','Reduzir latência de rede'], c:1,
+     e:'Esquemas resistentes a adversários com computadores quânticos.' }
+     ];
+
+     
+
+let i=0, answered=Array(qs.length).fill(null), correct=Array(qs.length).fill(false);
+
+
+const prog=document.getElementById('prog'), bar=document.getElementById('bar'),
+qtitle=document.getElementById('qtitle'), qdesc=document.getElementById('qdesc'),
+optsUl=document.getElementById('opts'), fb=document.getElementById('fb'),
+prev=document.getElementById('prev'), check=document.getElementById('check'),
+next=document.getElementById('next'), result=document.getElementById('result'),
+qcard=document.getElementById('qcard'), scoreTxt=document.getElementById('scoreTxt'),
+msg=document.getElementById('msg'), retry=document.getElementById('retry');
+
+
+function render(){
+prog.textContent=`${i+1}/${qs.length}`;
+bar.style.width=`${(i/qs.length)*100}%`;
+const q=qs[i];
+qtitle.textContent=q.t; qdesc.textContent=q.d||'';
+optsUl.innerHTML=''; fb.textContent=''; fb.className='feedback';
+q.a.forEach((txt,idx)=>{
+const li=document.createElement('li'); li.className='opt';
+const id=`q${i}_${idx}`;
+li.innerHTML=`<input type="radio" name="q${i}" id="${id}" ${answered[i]===idx?'checked':''}><label class="txt" for="${id}">${txt}</label>`;
+li.addEventListener('click',()=>{
+li.querySelector('input').checked=true;
+answered[i]=idx; check.disabled=false; next.disabled=true;
+[...optsUl.children].forEach(c=>c.classList.remove('correct','wrong'));
+fb.textContent=''; fb.className='feedback';
+});
+optsUl.appendChild(li);
+});
+prev.disabled = i===0; next.disabled=true; check.disabled = answered[i]==null;
+if(answered[i]!=null && (correct[i]===true || correct[i]===false)){ colorize(); next.disabled=false; check.disabled=true; }
+}
+function colorize(){
+const q=qs[i], chosen=answered[i];
+[...optsUl.children].forEach((li,idx)=>{ if(idx===q.c) li.classList.add('correct'); if(idx===chosen && chosen!==q.c) li.classList.add('wrong'); });
+const ok=chosen===q.c; fb.textContent= ok?'Correto.':`Incorreto. ${q.e}`; fb.className='feedback '+(ok?'ok':'err');
+check.disabled=true; next.disabled=false; correct[i]=ok;
+}
+function finish(){
+const hits = correct.filter(Boolean).length;
+scoreTxt.textContent=`${hits}/${qs.length}`;
+msg.textContent = hits===qs.length ? 'Perfeito' : hits>=Math.ceil(qs.length*0.7) ? 'Bom' : 'Tente novamente';
+qcard.style.display='none'; result.style.display='block'; bar.style.width='100%'; prog.textContent=`${qs.length}/${qs.length}`;
+}
+prev.addEventListener('click',()=>{ if(i>0){ i--; render(); }});
+check.addEventListener('click',colorize);
+next.addEventListener('click',()=>{ if(i<qs.length-1){ i++; render(); } else { finish(); }});
+retry.addEventListener('click',()=>{ i=0; answered.fill(null); correct.fill(false); result.style.display='none'; qcard.style.display='block'; render(); });
+render();
+</script>
+<div style="height:60px"></div>  
+
+<a href="#home" class="to-top" id="to-top" aria-label="Voltar ao topo">↑ Topo</a>
+
+    <!-- Back to top visibility-->
+ <script>
+  const toTop = document.getElementById('to-top');
+
+  const onScroll = () => {
+    if (window.scrollY > 300) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Se quiser garantir rolagem suave em todos os navegadores:
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+            
+
+   <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+  </footer>
+
+  <script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+
+    </body>
+
+
+
+</html>

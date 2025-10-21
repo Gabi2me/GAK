@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name ="author" content="Gabriela Belome Tome">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="gak_cinza.png">
+        <link rel="stylesheet" href="style.css">
+        <title>GAK</title>
+        
+    </head>
+
+    <body >
+    <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+    </div>
+     <div style="height:20px"></div>
+    <div class="corpo-destaque">
+
+        <div class="texto">
+        <h1 class="titulo-etec">SOBRE A ETEC</h1>
+
+        <p style="font-size: 20px; line-height: 1.6;">Localizada estrategicamente próximo ao corredor metropolitano da região de Campinas e criada em 1998, a escola vem oferecendo uma proposta didática sempre atualizada, conta hoje com mais de 1180 alunos matriculados nos diversos cursos. Vinculada ao Centro Estadual de Educação “Paula Souza”, considerado um centro de referência no ensino profissionalizante da América Latina, esta voltada na formação de indivíduos atuante na sociedade, pois busca a qualidade e conhecimento da realidade do mercado.</p>
+
+        <p style="font-size: 20px; line-height: 1.6;">Um Ensino Médio classificado em 1º lugar das Escolas Públicas do ENEM na cidade de Hortolândia por quatro anos consecutivos (2005, 2006, 2007 e 2008).</p>
+
+        <p style="font-size: 20px; line-height: 1.6;">Os laboratórios específicos de cada área são desenvolvidos projetos que integram o educando no mercado de trabalho. Aliado a essa estrutura, a Etec possui ainda um corpo docente com larga experiência e capacitação.</p>
+
+        <p style="font-size: 20px; line-height: 1.6;">A escola funcionou como classes descentralizadas, até 12 de novembro de 2002 da ETE Polivalente de Americana. Através do decreto Nº 47.317 de 13 de novembro de 2002, o Senhor Governador criou a Escola Técnica Estadual de Hortolândia, no município de Hortolândia.</p>
+        
+        <center>
+            <form action="https://etechortolandia.cps.sp.gov.br/nossa-historia-2/" method="get">
+                <button class="botao-contatos" type="submit">Visite o site oficial</button>
+            </form>
+        </center>
+      
+        </div>
+
+        <div class="midia">
+        <video src="video_etec.mp4" controls></video>
+
+
+        </div>
+    </div>
+    </div>
+
+     <div style="height: 20px"></div>       
+    <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+  </footer>
+
+<script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+    </body>
+
+
+
+</html>

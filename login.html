@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GAK - Login</title>
+
+  <!-- Ícones -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f1115;
+      color: #e9eef5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login {
+      width: 100vw;
+      height: 100vh;
+      background: #151822;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-box {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: #151822;
+      text-align: center;
+      padding: 40px;
+      z-index: 1;
+      transition: .6s ease-in-out 1.2s, visibility 0s 1s;
+    }
+
+    .login.active .form-box {
+      right: 50%;
+    }
+
+    .form-box.register {
+      visibility: hidden;
+    }
+
+    .login.active .form-box.register {
+      visibility: visible;
+    }
+
+    form {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .form-box h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      position: relative;
+      margin: 30px 0;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 13px 50px 13px 20px;
+      background: #1b2030;
+      border: 1px solid #2c364d;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+      color: #a9b3c7;
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #a9b3c7;
+    }
+
+    .btn {
+      width: 100%;
+      height: 48px;
+      background: linear-gradient(135deg, #7cf3d2, #2c364d);
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .toggle-box {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .toggle-box::before {
+      content: '';
+      position: absolute;
+      left: -250%;
+      width: 300%;
+      height: 100%;
+      background: linear-gradient(135deg, #7cf3d2, #2c364d);
+      border-radius: 150px;
+      z-index: 2;
+      transition: 1.8s ease-in-out;
+    }
+
+    .login.active .toggle-box::before {
+      left: 50%;
+    }
+
+    .toggle-panel {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      transition: .6s ease-in-out;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .toggle-panel.toggle-left {
+      left: 0;
+      transition-delay: 1.2s;
+    }
+
+    .login.active .toggle-panel.toggle-left {
+      left: -50%;
+      transition-delay: .6s;
+    }
+
+    .toggle-panel.toggle-right {
+      right: -50%;
+      transition-delay: .6s;
+    }
+
+    .login.active .toggle-panel.toggle-right {
+      right: 0;
+      transition-delay: 1.2s;
+    }
+
+    .toggle-panel h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .toggle-panel p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .toggle-panel .btn {
+      width: 160px;
+      height: 46px;
+      background: transparent;
+      border: 2px solid #fff;
+      box-shadow: none;
+    }
+
+    /* Responsivo */
+    @media screen and (max-width: 650px) {
+      .form-box {
+        width: 100%;
+      }
+
+      .toggle-panel {
+        display: none;
+      }
+
+      .toggle-box::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login">
+    <!-- LOGIN -->
+    <div class="form-box login">
+      <form action="/login" method="POST">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input type="email" name="email" placeholder="Email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" name="senha" placeholder="Senha" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+    </div>
+
+    <!-- CADASTRO -->
+    <div class="form-box register">
+      <form action="/cadastro" method="POST">
+        <h1>Criar Conta</h1>
+        <div class="input-box">
+          <input type="text" name="nome" placeholder="Nome completo" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="email" name="email" placeholder="Email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" name="senha" placeholder="Senha" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Painéis -->
+    <div class="toggle-box"></div>
+
+    <div class="toggle-panel toggle-left">
+      <h1>Olá! Seja bem-vindo à GAK!</h1>
+      <p>Ainda não tem uma conta?</p>
+      <button class="btn register-btn" type="button">Criar conta</button>
+    </div>
+
+    <div class="toggle-panel toggle-right">
+      <h1>Bem-vindo de volta!</h1>
+      <p>Já possui uma conta?</p>
+      <button class="btn login-btn" type="button">Fazer login</button>
+    </div>
+  </div>
+
+   <script>
+  // Função para definir um cookie (simples)
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+  }
+
+  // Captura o envio do formulário de login
+  document.querySelector('.form-box.login form').addEventListener('submit', function (e) {
+    e.preventDefault(); // impede envio real do formulário
+
+    const email = this.email.value.trim();
+    const senha = this.senha.value.trim();
+
+    // Simulação de validação — pode trocar por sua lógica real depois
+    if (email && senha) {
+      // Cria o cookie "usuario"
+      setCookie('usuario', email, 1); // expira em 1 dia
+      // Redireciona para a home
+      window.location.href = 'home.html';
+    } else {
+      alert('Preencha todos os campos.');
+    }
+  });
+
+  // Se já estiver logado, vai direto para home
+  const jaLogado = document.cookie.includes('usuario=');
+  if (jaLogado) {
+    window.location.href = 'home.html';
+  }
+</script>
+
+</body>
+</html>

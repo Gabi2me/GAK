@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name ="author" content="Gabriela Belome Tome">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="gak_cinza.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!--Biblioteca para os icones-->
+
+        <title>GAK</title>
+        
+    </head>
+
+    <body >
+ <div id="menu">
+        <ul class="menu-list" id="menu-list" class="logo_menu">
+          
+               <li class="logo-menu">
+                    <a href="home.html">
+                         <img src="gak_cinza.png" width="55" height="56">
+                    </a>
+               </li>
+
+               <li>
+                    <a href = "home.html">HOME</a>
+               </li>
+     
+               <li>
+                    <a href = "etec.html">ETEC</a>
+               </li>
+               
+               <li>
+                    <a href = "informatica.html">INFORMÁTICA</a>
+               </li>
+
+               </li>
+               
+               <li>
+                    <a href = "quantica.html">COMPUTAÇÃO QUÂNTICA</a>
+               </li>
+          
+               <li>
+                    <a href = "creditos.html">CRÉDITOS</a>
+               </li>
+          
+               <li>
+                    <a href = "contatos.html">CONTATOS</a>
+               </li>
+
+               <li>
+                    <a href = "faq.html">FAQ</a>
+
+               </li>
+               
+              <ul id="menu-list" class="menu-list logo_menu">
+  ...
+
+           </ul>
+     </div>
+
+<script>
+(() => {
+  const menu = document.querySelector('.user-menu');
+  if (!menu) return;
+  const btn  = menu.querySelector('.user-toggle');
+  const list = menu.querySelector('.user-dropdown');
+
+  function setOpen(v){
+    menu.classList.toggle('open', v);
+    btn.setAttribute('aria-expanded', v);
+    list.setAttribute('aria-hidden', String(!v));
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    setOpen(!menu.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+</script>
+    
+<section class="atalhos">
+    <div style="height:150px"></div>
+    <nav aria-label="Sumario" class="toc"></nav>
+    <center>
+        <h1>
+          <i class="fa-solid fa-circle-question"></i>
+           PERGUNTAS FREQUÊNTES (FAQ) 
+        </h1>
+        <p style="font-size: 20px; line-height: 1.6;"> 
+          Encontre respostas rápidas para suas dúvidas sobre computação quântica, uso do site e nosso projeto
+        </p>
+    </center>
+
+    <div style="height:40px"></div>
+      <div class="wrap">
+           <h3>
+              <i class="fa-solid fa-circle-info" style="color: #a9b3c7;"></i>
+              Bem vindo a nossa Central de Ajuda
+            </h3>
+              <p style="font-size: 20px; line-height: 1.6;">
+                Este FAQ foi criado para responder às perguntas mais frequentes sobre computação quântica, o projeto GAK e o funcionamento do nosso site. 
+                Use a busca abaixo ou navegue pelas categorias para encontrar rapidamente o que precisa.
+              </p>
+
+            <ul class="grid-atalhos">
+              <li>
+                <a class="card-atalho" href="#login">
+                  <i class="fa-solid fa-right-from-bracket" style="color: #a9b3c7;"></i>
+                  <span>Login e Navegação</span>
+                </a>
+              </li>
+
+              <li>
+                <a class="card-atalho" href="#contato">
+                  <i class="fa-solid fa-laptop"></i>
+                  <span>Informática</span>
+                </a>
+              </li>
+
+              <li>
+                <a class="card-atalho" href="#quantica">
+                  <i class="fa-solid fa-atom" style="color: #a9b3c7;"></i>
+                  <span>Computação Quântica</span>
+                </a>
+              </li>
+
+              <li>
+                <a class="card-atalho" href="#equipe">
+                  <i class="fa-solid fa-people-group"></i>
+                  <span>Nossa Equipe</span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </section>
+
+           
+
+    <div style="height:80px"></div>
+  <form class="search" role="search" onsubmit="return false">
+    <label class="sr-only" for="q">Buscar</label>
+    <input id="q" name="q" type="search" placeholder="Busque por palavras-chave…" autocomplete="off" />
+  </form>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const barra = document.getElementById('q');
+  if (!barra) return;
+
+  const itens = Array.from(document.querySelectorAll('.faq-item'));
+
+  // mensagem "Nenhum resultado" reutilizando o estilo
+  let msg = document.getElementById('sem-resultados');
+  if (!msg) {
+    msg = document.createElement('div');
+    msg.id = 'sem-resultados';
+    msg.className = 'faq-item';
+    msg.innerHTML = '<h3>Nenhum resultado</h3><p>Tente outras palavras-chave.</p>';
+    msg.style.display = 'none';
+    const form = document.querySelector('form.search') || barra.parentElement;
+    form.insertAdjacentElement('afterend', msg);
+  }
+
+  const normalizar = s =>
+    s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '').trim();
+
+  function filtrar() {
+    const q = normalizar(barra.value);
+    let visiveis = 0;
+
+    itens.forEach(el => {
+      const titulo = el.querySelector('h3')?.textContent || '';
+      const corpo  = el.querySelector('p')?.textContent || '';
+      const texto  = normalizar(`${titulo} ${corpo}`);
+      const ok = !q || texto.includes(q);
+      el.style.display = ok ? '' : 'none';
+      if (ok) visiveis++;
+    });
+
+    msg.style.display = visiveis ? 'none' : '';
+  }
+
+  barra.addEventListener('input', filtrar);
+  filtrar();
+});
+</script>
+
+
+<section id="login">
+  <div style="height:180px"></div>
+      <div class="wrap">
+             <p class="legenda">LOGIN E NAVEGAÇÃO</p>
+            <div style="height:16px"></div>
+          <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Como faço para navegar entre as páginas do site?</h3>
+              <p>Use o menu de navegação no topo da página para acessar todas as seções do site:
+                    <br>
+                    <br>
+                    HOME - Página inicial com visão geral do projeto
+                    <br>
+                    <br>
+                    ETEC - Informações sobre nossa escola
+                    <br>
+                    <br>
+                    FAQ - Onde você esta!
+                    <br>
+                    <br>
+                    EVOLUÇÃO - Linha do tempo da evolução tecnológica
+                    <br>
+                    <br>
+                    QUÂNTICA - Tudo sobre computação quântica
+                    <br>
+                    <br>
+                    CRÉDITOS - Fontes de pesquisa e recursos utilizados
+                    <br>
+                    <br>
+                    CONTATO - Formulário para entrar em contato conosco
+                </p>
+          </div>
+
+          <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Como entro em contato com a equipe do GAK?</h3>
+              <p>Você pode entrar em contato conosco de várias formas:
+
+                    Formulário de contato: Acesse a página Contato e preencha o formulário com sua mensagem
+                    <br>
+                    Email: Envie um email para contato@gak.com
+                    <br>
+                    Telefone: Ligue para (19) 9283-5678
+                    <br>
+                    Presencialmente: Visite a ETEC de Hortolândia - Rua Capitão Lourival Mey, 750
+                </p>
+          </div>
+
+          <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Onde encontro o quiz interativo sobre computação quântica?</h3>
+              <p>O quiz interativo está localizado na página de Computação Quântica. Para acessá-lo:
+                    <br>
+                    1.  Clique em "COMPUTAÇÃO QUÂNTICA" no menu de navegação
+                    <br>
+                    2.  Role a página até a seção do quiz
+                    <br>
+                    3.  Responda às perguntas e clique em "Next" para avançar
+                    <br>
+                    O quiz testa seus conhecimentos sobre computação quântica de forma educativa e divertida.
+                </p>
+          </div>
+
+           <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Onde encontro a linha do tempo da evolução da informática?</h3>
+              <p>O quiz interativo está localizado na página de Informática. Para acessá-lo:
+                    <br>
+                    1.  Clique em "INFORMÁTICA" no menu de navegação
+                    <br>
+                    2.  É só clicar em "ver linha do tempo"
+                    <br>
+                    3.  Irá aparecer
+                    <br>
+                    Aproveite para ampliar seus conhecimentos!
+                </p>
+          </div>
+
+          <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Como posso avaliar o site?</h3>
+              <p> 
+                    1.Acesse a página Contato
+                    <br>
+                    2 Preencha o formulário de contato
+                    <br>
+                    3 Na seção "Avalie nosso site", clique nas estrelas para dar sua nota (1 a 5 estrelas)
+                    <br>
+                    4 Clique em "Enviar Mensagem" para enviar sua avaliação
+                    <br>
+                    Sua opinião é muito importante para melhorarmos nosso site!.
+                </p>
+        </div>
+
+                 <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">Em quais navegadores posso acessar o site?</h3>
+              <p> 
+                    1.Mozila FireFox
+                    <br>
+                    2 Microssoft Edge
+                    <br>
+                    3 Chrome
+                    <br>
+                    4 Safari
+                </p>
+
+
+          </div>
+
+          <div class="faq-item">
+              <h3 onclick="toggleFaq(this)">O site é compatível com dispositivos móveis?</h3>
+              <p>Ainda não,mas estamos preparando para que nosso site possa ser acessado por você da sua casa em qualquer dispositivos.</p>
+          </div>
+      </div>
+</section>
+  
+   
+  <selection id="contato">
+    <div style="height:205px"></div>
+    <div class="wrap">
+            <p class="legenda">INFORMÁTICA</p>
+  </selection>
+        
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que foi a Máquina Analítica de Babbage?</h3>
+            <p>Um projeto de computador mecânico programável do séc. XIX; introduziu unidade de processamento, memória e I/O, base do modelo moderno.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que a Máquina de Turing mostrou em 1936?</h3>
+            <p>Que um dispositivo simples pode simular qualquer cálculo computável; fundamento teórico da computação.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Para que servia o ábaco na Mesopotâmia?</h3>
+            <p>Para auxiliar cálculos aritméticos por meio de contagem posicional com contas deslizantes..</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que a Máquina de Diferenças de Charles Babbage calculava?</h3>
+            <p>Tabelas matemáticas (polinomiais) de forma automática para reduzir erros humanos.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Qual foi a principal inovação do ABC de Atanasoff-Berry (1939)??</h3>
+            <p>Uso de eletrônica digital com sistema binário e capacitores como memória regenerativa.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Para que o ENIAC foi inicialmente encomendado?</h3>
+            <p>Para calcular tabelas balísticas do Exército dos EUA na Segunda Guerra.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Qual a vocação do IBM 701 e do IBM 702?</h3>
+            <p>IBM 701 para aplicações científicas e defesa; IBM 702 para aplicações comerciais e processamento de dados.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que distinguia o ENIAC de Mauchly e Eckert (1943–1946)?</h3>
+            <p>Era eletrônico, de propósito geral e reprogramável por painéis e cabos, muito mais rápido que máquinas eletromecânicas.</p>
+        </div>
+    </div>
+    
+<section id="quantica">
+   <div style="height:180px"></div>
+    <div class="wrap">
+           <p class="legenda">COMPUTAÇÃO QUÂNTICA</p>
+  </selection>
+        
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Quando há ganho real sobre supercomputadores?</h3>
+            <p>
+                Quando o problema tem estrutura explorável por interferência e emaranhamento (química eletrônica, otimização combinatória) e o hardware suporta circuitos 
+                com profundidade útil e erros baixos. Em geral, em fluxos híbridos clássico-quântico.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Supremacia quântica” é o mesmo que “vantagem quântica”?</h3>
+            <p>Não. Supremacia demonstra uma tarefa impraticável para clássicos, mesmo sem utilidade prática. Vantagem quântica é ganho mensurável de custo/tempo/energia 
+                em um caso de uso real.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Por que Shor ameaça RSA mas não “quebra” AES do mesmo jeito?</h3>
+            <p>Shor resolve fatoração e logaritmo discreto, base do RSA. Em criptografia simétrica o melhor é Grover, que dá ganho quadrático; dobrar o tamanho da chave neutraliza
+                 o ataque.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Por que as empresas usam algoritmos variacionais hoje (VQE, QAOA)?</h3>
+            <p>Porque os dispositivos atuais são ruidosos e pequenos. Variacionais usam circuitos curtos e otimizadores clássicos, permitindo explorar química e otimização 
+                com menos profundidade.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Como o “custo de entrada de dados” impacta IA quântica?</h3>
+            <p>Codificar muitos dados clássicos em qubits pode custar tempo O(N) e remover a vantagem. Funciona melhor com dados de baixa dimensão, estruturados, ou gerados 
+                no próprio processo quântico.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que é necessário para química computacional realmente útil na indústria?</h3>
+            <p>Qubits lógicos suficientes para representar orbitais, correção de erros de ponta, estimativa de fase tolerante a falhas e milhões de qubits físicos para problemas grandes. No curto prazo, casos menores e 
+                heurísticos variacionais.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Em que casos usar portas universais, quantum annealing ou simulação analógica?</h3>
+            <p>Portas universais para algoritmos gerais (Shor, QFT). Annealing para QUBO/Ising e roteamento. Simulação analógica para modelos específicos de 
+                materiais e química.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Quais métricas importam ao escolher hardware (IBM, Google, IonQ etc.)?</h3>
+            <p>Qubits físicos e lógicos, fidelidade de portas 1- e 2-qubit, tempos T1/T2, conectividade do chip, erro por porta, profundidade útil antes do ruído, fila 
+                e throughput do serviço.</p>
+        </div>
+    </div>
+</section>
+
+
+ <div style="height:180px"></div> 
+  <section id="equipe">
+      
+    <div class="wrap">
+            <p class="legenda">NOSSA EQUIPE</p>
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">O que é o projeto GAK?</h3>
+            <p>O GAK é um projeto desenvolvido para o evento ETEC Portas Abertas, que explora a evolução da tecnologia e os avanços da computação quântica.
+                 O projeto foi criado pelos alunos Kemilly, Gabriela, Arthur e Pedro, com orientação das professoras Fernanda, Kelly, Juliana e Priscila.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Qual é o objetivo do projeto GAK?</h3>
+            <p>O objetivo do GAK é apresentar de forma acessível e educativa a evolução da tecnologia ao longo do tempo, com foco especial na 
+                computação quântica como a próxima fronteira da computação. O projeto busca demonstrar como a inovação tecnológica tem transformado a sociedade e 
+                como a computação quântica pode revolucionar diversas áreas no futuro.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">Quem são os integrantes da equipe GAK?</h3>
+            <p>Nossa equipe é composta por:
+                <br>
+                Kemilly Ananias - Gerente de Projetos
+                <br>
+                <br>
+                Gabriela Tome - Desenvolvedora Back-End
+                <br>
+                <br>
+                Arthur Gomes - Desenvolvedor Front-End
+                <br>
+                <br>
+                Pedro Gobbati - Analista de Sistemas
+                <br>
+                <br>
+                Conheça mais sobre nossa equipe na página CRÉDITOS.</p>
+        </div>
+    </div>
+</selection>
+
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+        }
+
+    </script>  
+<a href="#home" class="to-top" id="to-top" aria-label="Voltar ao topo">↑ Topo</a>
+
+<!-- Back to top visibility-->
+ <script>
+  const toTop = document.getElementById('to-top');
+
+  const onScroll = () => {
+    if (window.scrollY > 300) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Se quiser garantir rolagem suave em todos os navegadores:
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<div style="height:20px"></div> 
+   <footer>
+     <div id="rodape">
+      <p>ETEC de Hortolândia — 2025. © Todos os direitos reservados.</p>
+      <p>Trabalho acadêmico sem fins lucrativos.</p>
+     </div>
+  </footer>
+
+<script>
+  // Função simples para apagar o cookie "usuario" e voltar para o login
+  function logout() {
+    // Expira o cookie imediatamente
+    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redireciona para a tela de login
+    window.location.href = "/login.html";
+  }
+
+  // Conecta o botão "Logout" ao clique
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".user-item");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  });
+</script>
+
+
+</body>
+</html>
